@@ -10,6 +10,7 @@
 
 
 //when I click on 1, update the screen. I will need to take the value stored in 1, and "add" it to the value on the screen.
-document.querySelectorAll(".one").addEventListener("click", function(){
-  alert("clicked a button");
+var els = document.querySelector(".one");
+els.addEventListener("click",function(){
+  alert("connected");
 });
