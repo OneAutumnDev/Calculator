@@ -1,0 +1,56 @@
+/* Mobile first design using @media query */
+/* I want the calculator to take up 100% of the screen on mobile devices, and be roughly the same size on
+screens up to 1200px, special size for extra large screens?*/
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  background: red;
+  display: flex;
+}
+
+.containerScreen {
+  height: 10%;
+  width: 100%;
+  background: yellow;
+  display: flex;
+}
+
+.screen {
+  display: flex;
+  justify-content: flex-end;
+  padding: 25px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 400px){
+
+}
+
+@media only screen and (min-width: 401px) and (max-width: 720px){
+
+}
+
+@media only screen and (min-width: 721px) and (max-width: 900px){
+
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1200px){
+
+}
+
+@media only screen and (min-width: 1200px){
+
+}
