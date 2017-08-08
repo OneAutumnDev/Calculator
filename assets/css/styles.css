@@ -17,14 +17,14 @@ body {
 .container {
   height: 100%;
   width: 100%;
-  background: red;
+  background: #bad4ff;
   display: flex;
 }
 
 .containerScreen {
   height: 10%;
   width: 100%;
-  background: yellow;
+  background: #b0b4ba;
   display: flex;
 }
 
