@@ -19,6 +19,7 @@ body {
   width: 100%;
   background: #bad4ff;
   display: flex;
+  flex-flow: wrap;
 }
 
 .containerScreen {
@@ -33,6 +34,17 @@ body {
   justify-content: flex-end;
   padding: 25px;
   width: 100%;
+}
+
+.containerNumbers {
+  display: flex;
+  height: 90%;
+  width: 75%;
+  flex-wrap: wrap;
+}
+
+.number {
+  width: 25%;
 }
 
 @media only screen and (max-width: 400px){
