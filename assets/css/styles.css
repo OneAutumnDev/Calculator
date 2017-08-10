@@ -50,6 +50,13 @@ body {
 .equals {
   width: 66%;
 }
+
+.containerSigns {
+  width: 25%;
+  height: 90%;
+  display: flex;
+  flex-wrap: wrap;
+}
 @media only screen and (max-width: 400px){
 
 }

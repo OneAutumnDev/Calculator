@@ -7,12 +7,15 @@
 //Object that stores the values of 1-9 + 0, for onkeypress events. Functionality for users to type inputs into the
     //keyboard instead of only click listeners.
 
+var current = 0; //The current value, should show on screen
+var inputDigit = ""; //The value that is being added to the current value.
 var numButtons = [];
 //when I click on 1, update the screen. I will need to take the value stored in 1, and "add" it to the value on the screen.
-var els = document.querySelector(".one");
-  els.addEventListener("click", function(){
-    alert("connected");
+var numBtn = document.querySelectorAll(".one");
+for(var i = 0; i < numBtn.length; i++){
+  numBtn[i].addEventListener("click", function(){
+    numButtons.push(this.value);
   });
-
+}
 //Currently selecting only the first class named "one"; I will need a add an event listener to all of the buttons.
 //Either by adding the event listener to a different class each time, or by creating a loop.
