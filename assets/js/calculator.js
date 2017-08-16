@@ -8,19 +8,16 @@
     //keyboard instead of only click listeners.
 
 
-var current = document.querySelector(".screen span"); //The current value, should show on screen
-var inputDigit = ""; //The value that is being added to the current value.
-var numButtons = [];
-//when I click on 1, update the screen. I will need to take the value stored in 1, and "add" it to the value on the screen.
-var numBtn = document.querySelectorAll(".one");
+var current = document.querySelector(".screen span"); //The current value, shown on the screen
+var numButtons = [];//Arry that number button clicks are stored in.
+var numBtn = document.querySelectorAll(".one"); //Selector, all elements with class of "one" (placeholder)
+//Loop through all of the buttons (querySelectorAll stores them in a pseudo Array)
 for(var i = 0; i < numBtn.length; i++){
+  //At numBtn[i] (pseudo Array) add a click listener that takes an anonymous function.
   numBtn[i].addEventListener("click", function(){
+    //Push(add) the value of numBtn[i] to the end of the numButtons array, each time a button is pressed.
     numButtons.push(this.value);
-    current.textContent = numButtons.toString();
+    //Update the display to show the current value, converted to a string and without the commas.
+    current.textContent = numButtons.toString().replace(/,/g,"");
   });
 }
-//Currently selecting only the first class named "one"; I will need a add an event listener to all of the buttons.
-//Either by adding the event listener to a different class each time, or by creating a loop.
-//current.textContent = numButtons;
-
-// I need the conversion to string to run after we have click buttons, everytime we click a button it runs.
