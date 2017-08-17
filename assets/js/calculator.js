@@ -7,7 +7,7 @@
 //Object that stores the values of 1-9 + 0, for onkeypress events. Functionality for users to type inputs into the
     //keyboard instead of only click listeners.
 
-
+var display = "";
 var current = document.querySelector(".screen span"); //The current value, shown on the screen
 var numButtons = [];//Arry that number button clicks are stored in.
 var numBtn = document.querySelectorAll(".one"); //Selector, all elements with class of "one" (placeholder)
@@ -18,6 +18,8 @@ for(var i = 0; i < numBtn.length; i++){
     //Push(add) the value of numBtn[i] to the end of the numButtons array, each time a button is pressed.
     numButtons.push(this.value);
     //Update the display to show the current value, converted to a string and without the commas.
-    current.textContent = numButtons.toString().replace(/,/g,"");
+    display = numButtons.toString().replace(/,/g,"");
+    current.textContent = display;
+    //Is the value of display only within this function? --Probably!
   });
 }
