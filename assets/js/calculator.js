@@ -13,6 +13,7 @@ var inp2 = "";
 var total = ""; //initial total. Changes when calculation run
 var current = document.querySelector(".screen span"); //The current value, shown on the screen
 var numButtons = [];//Arry that number button clicks are stored in.
+var numButtons2 = [];
 var signButtons = [];
 var numBtn = document.querySelectorAll(".one"); //Selector, all elements with class of "one" (placeholder)
 var signBtn = document.querySelectorAll(".sign");
@@ -24,14 +25,15 @@ for(var i = 0; i < numBtn.length; i++){
   //At numBtn[i] (pseudo Array) add a click listener that takes an anonymous function.
   numBtn[i].addEventListener("click", function(){
     //Push(add) the value of numBtn[i] to the end of the numButtons array, each time a button is pressed.
-    numButtons.push(this.value);
     if (inpSign.length === 0) {
+      numButtons.push(this.value);
       //Update the display to show the current value, converted to a string and without the commas.
       inp1 = numButtons.toString().replace(/,/g,"");
       current.textContent = inp1;
       total = inp1 + inpSign + inp2;
     } else {
-      inp2 = numButtons.toString().replace(/,/g,"");
+      numButtons2.push(this.value);
+      inp2 = numButtons2.toString().replace(/,/g,"");
       current.textContent = inp2;
       total = inp1 + inpSign + inp2;
     }
@@ -49,6 +51,3 @@ for(var i = 0; i < signBtn.length; i++){
 }
 
 //reset function: after input 1, reset to empty. Save next inputs to a new variable.
-function reset(){
-  
-}
