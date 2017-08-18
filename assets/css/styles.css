@@ -14,10 +14,6 @@ body {
   display: flex;
 }
 
-button {
-  border-radius: 20px;
-}
-
 .container {
   height: 100%;
   width: 100%;
@@ -71,7 +67,7 @@ button {
   width: 50%;
 }
 
-.one, .sign {
+.one {
   height: 25%;
   width: 25%;
 }
