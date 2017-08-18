@@ -17,7 +17,12 @@ var numButtons2 = [];
 var signButtons = [];
 var numBtn = document.querySelectorAll(".one"); //Selector, all elements with class of "one" (placeholder)
 var signBtn = document.querySelectorAll(".sign");
-
+var calculation = {
+  "+": function(a, b) { return a + b},
+  "-": function(a, b) { return a - b},
+  "*": function(a, b) { return a * b},
+  "/": function(a, b) { return a / b}
+}
 
 
 //Loop through all of the buttons (querySelectorAll stores them in a pseudo Array)
