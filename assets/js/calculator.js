@@ -1,13 +1,16 @@
 var numOne = "";
 var oper = "";
 var numTwo = "";
+var numThree = "";
 var total = ""; //initial total. Changes when calculation run
+var equals = "";
 var numButtonsOne = []; //Array that number button clicks are stored in.
 var numButtonsTwo = []; //Array for number button clicks, tied to numTwo
 var operButtons = []; //Array for operator buttons, tied to oper
 var current = document.querySelector(".screen span"); //The current value, shown on the screen
 var numBtn = document.querySelectorAll(".one"); //Selector, all elements with class of "one" (placeholder)
 var operBtn = document.querySelectorAll(".operator");
+var equalsBtn = document.querySelector(".equals");
 var calculation = {
   "+": function(a, b) { return a + b},
   "-": function(a, b) { return a - b},
@@ -49,6 +52,24 @@ for(var i = 0; i < operBtn.length; i++){
     operBtn[i].addEventListener("click", operBtnEvent, false);
 }
 
+equalsBtn.addEventListener("click", equality, false);
 
+function equality() {
+  equals = "=";
+  numOne = Number(numOne);
+  numTwo = Number(numTwo);
+  calculate();
+  reset();
+}
 
 //if the equals button is pressed, run the calculation. calculation[signBtn](inp1, inp2);
+function reset() {
+  numOne = oper = numTwo = "";
+  numButtonsOne = numButtonsTwo = operButtons = [];
+  current.textContent = numThree;
+}
+
+function calculate() {
+  numThree = calculation[oper](numOne,numTwo);
+  current.textContent = numThree;
+}

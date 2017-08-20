@@ -67,7 +67,7 @@ body {
   width: 50%;
 }
 
-.one, .operator {
+.one, .operator, .equals {
   height: 25%;
   width: 25%;
 }
