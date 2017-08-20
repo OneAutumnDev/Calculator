@@ -1,13 +1,13 @@
-var inp1 = "";
-var inpOp = "";
-var inp2 = "";
+var numOne = "";
+var oper = "";
+var numTwo = "";
 var total = ""; //initial total. Changes when calculation run
-var numButtons = []; //Array that number button clicks are stored in.
-var numButtons2 = []; //Array for number button clicks, tied to inp2
-var opButtons = []; //Array for operator buttons, tied to inpOp
+var numButtonsOne = []; //Array that number button clicks are stored in.
+var numButtonsTwo = []; //Array for number button clicks, tied to numTwo
+var operButtons = []; //Array for operator buttons, tied to oper
 var current = document.querySelector(".screen span"); //The current value, shown on the screen
 var numBtn = document.querySelectorAll(".one"); //Selector, all elements with class of "one" (placeholder)
-var opBtn = document.querySelectorAll(".operator");
+var operBtn = document.querySelectorAll(".operator");
 var calculation = {
   "+": function(a, b) { return a + b},
   "-": function(a, b) { return a - b},
@@ -16,11 +16,11 @@ var calculation = {
 }
 
 //function to add operators to the signButtons array and then convert them into values for the inpSign variable. Happens during the click event.
-var opBtnEvent = function() {
-  if(inpOp.length < 1){
-    opButtons.push(this.value);
-    inpOp = opButtons.toString().replace(/,/g, "");
-    current.textContent = inpOp;
+var operBtnEvent = function() {
+  if(oper.length < 1){
+    operButtons.push(this.value);
+    oper = operButtons.toString().replace(/,/g, "");
+    current.textContent = oper;
   } else {
     //if there is already an operator, exit the loop returning "undefined"
     return;
@@ -30,23 +30,23 @@ var opBtnEvent = function() {
 for(var i = 0; i < numBtn.length; i++){
   //At numBtn[i] (pseudo Array) add a click listener that takes an anonymous function.
   numBtn[i].addEventListener("click", function(){
-    if (inpOp.length === 0) {
+    if (oper.length === 0) {
       //Push(add) the value of numBtn[i] to the end of the numButtons array, each time a button is pressed.
-      numButtons.push(this.value);
+      numButtonsOne.push(this.value);
       //Update the display to show the current value, converted to a string and without the commas.
-      inp1 = numButtons.toString().replace(/,/g,"");
-      current.textContent = inp1;
+      numOne = numButtonsOne.toString().replace(/,/g,"");
+      current.textContent = numOne;
     } else {
-      numButtons2.push(this.value);
-      inp2 = numButtons2.toString().replace(/,/g,"");
-      current.textContent = inp2
+      numButtonsTwo.push(this.value);
+      numTwo = numButtonsTwo.toString().replace(/,/g,"");
+      current.textContent = numTwo;
     }
   });
 }
 
 //Loop to add click listeners to the operator buttons
-for(var i = 0; i < opBtn.length; i++){
-    opBtn[i].addEventListener("click", opBtnEvent, false);
+for(var i = 0; i < operBtn.length; i++){
+    operBtn[i].addEventListener("click", operBtnEvent, false);
 }
 
 
