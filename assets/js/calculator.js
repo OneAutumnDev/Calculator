@@ -24,7 +24,16 @@ var calculation = {
   "/": function(a, b) { return a / b}
 }
 
-
+var signBtnEvent = function() {
+  if(inpSign.length < 1){
+    signButtons.push(this.value);
+    inpSign = signButtons.toString().replace(/,/g, "");
+    current.textContent = inpSign;
+    total = inp1 + inpSign + inp2;
+  } else {
+    return;
+  }
+}
 //Loop through all of the buttons (querySelectorAll stores them in a pseudo Array)
 for(var i = 0; i < numBtn.length; i++){
   //At numBtn[i] (pseudo Array) add a click listener that takes an anonymous function.
@@ -45,14 +54,10 @@ for(var i = 0; i < numBtn.length; i++){
   });
 }
 
-
 for(var i = 0; i < signBtn.length; i++){
-  signBtn[i].addEventListener("click", function(){
-    signButtons.push(this.value);
-    inpSign = signButtons.toString().replace(/,/g, "");
-    current.textContent = inpSign;
-    total = inp1 + inpSign + inp2;
-  });
+    signBtn[i].addEventListener("click", signBtnEvent, false);
 }
 
-//reset function: after input 1, reset to empty. Save next inputs to a new variable.
+
+
+//if the equals button is pressed, run the calculation. calculation[signBtn](inp1, inp2);

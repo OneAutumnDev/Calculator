@@ -67,7 +67,7 @@ body {
   width: 50%;
 }
 
-.one {
+.one, .sign {
   height: 25%;
   width: 25%;
 }
