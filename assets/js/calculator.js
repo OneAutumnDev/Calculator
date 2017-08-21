@@ -1,18 +1,17 @@
 var numOne = "";
-var oper = "";
 var numTwo = "";
 var numThree = "";
-var total = ""; //initial total. Changes when calculation run
+var oper = "";
 var equals = "";
 var decimal = "";
-var numButtonsOne = []; //Array that number button clicks are stored in.
+var numButtonsOne = []; //Array for number button clicks, tied to numOne
 var numButtonsTwo = []; //Array for number button clicks, tied to numTwo
 var operButtons = []; //Array for operator buttons, tied to oper
 var current = document.querySelector(".screen span"); //The current value, shown on the screen
-var numBtn = document.querySelectorAll(".num"); //Selector, all elements with class of "one" (placeholder)
+var numBtn = document.querySelectorAll(".num"); //Selector, all elements with class of num (Number Buttons)
 var operBtn = document.querySelectorAll(".operator"); //Selects the operator buttons "+,-,*,/"
 var equalsBtn = document.querySelector(".equals"); //Selects the equals "=" button
-var decimalBtn = document.querySelector(".decimal");
+var decimalBtn = document.querySelector(".decimal"); //Selects the decimal "." button
 //Object that stores the potential calculations based on the oper variable.
 var calculation = {
   "+": function(a, b) { return a + b},
@@ -20,6 +19,47 @@ var calculation = {
   "*": function(a, b) { return a * b},
   "/": function(a, b) { return a / b}
 }
+
+//Loop to add click listeners to the operator buttons
+for(var i = 0; i < operBtn.length; i++){
+    operBtn[i].addEventListener("click", operBtnEvent, false);
+}
+
+//Equals button click listener, runs the equality function on click
+equalsBtn.addEventListener("click", equality, false);
+
+decimalBtn.addEventListener("click", decimalFunc, false);
+
+//Loop through the number Buttons, logic for Number One and Number Two
+for(var i = 0; i < numBtn.length; i++){
+  //Click Listener for Number Buttons
+  numBtn[i].addEventListener("click", function(){
+    //If there is not an operator, add number clicks to Number One, else add them to Number Two
+    if (oper.length === 0) {
+      //If there is a decimal point, add it in.
+      if(decimal.length === 1) {
+        numButtonsOne.push(".");
+        resetDecimal();
+      }
+      //Push(add) the value of numBtn[i] to the end of the numButtons array, each time a button is pressed.
+      numButtonsOne.push(this.value);
+      //Update the display to show the current value, converted to a string and without the commas.
+      numOne = numButtonsOne.toString().replace(/,/g,"");
+      current.textContent = numOne;
+    } else {
+      //If there is not an operator, add number clicks to Number One, else add them to Number Two
+      if(decimal.length === 1) {
+        //If there is a decimal point, add it in.
+        numButtonsTwo.push(".");
+        resetDecimal();
+      }
+      numButtonsTwo.push(this.value);
+      numTwo = numButtonsTwo.toString().replace(/,/g,"");
+      current.textContent = numTwo;
+    }
+  });
+}
+
 
 //function to add operators to the signButtons array and then convert them into values for the inpSign variable. Happens during the click event.
 function operBtnEvent() {
@@ -33,44 +73,8 @@ function operBtnEvent() {
   }
 }
 
-//Loop through all of the buttons (querySelectorAll stores them in a pseudo Array)
-for(var i = 0; i < numBtn.length; i++){
-  //At numBtn[i] (pseudo Array) add a click listener that takes an anonymous function.
-  numBtn[i].addEventListener("click", function(){
-    if (oper.length === 0) {
-      if(decimal.length === 1) {
-        numButtonsOne.push(".");
-        resetDecimal();
-      }
-      //Push(add) the value of numBtn[i] to the end of the numButtons array, each time a button is pressed.
-      numButtonsOne.push(this.value);
-      //Update the display to show the current value, converted to a string and without the commas.
-      numOne = numButtonsOne.toString().replace(/,/g,"");
-      current.textContent = numOne;
-    } else {
-      if(decimal.length === 1) {
-        numButtonsTwo.push(".");
-        resetDecimal();
-      }
-      numButtonsTwo.push(this.value);
-      numTwo = numButtonsTwo.toString().replace(/,/g,"");
-      current.textContent = numTwo;
-    }
-  });
-}
-
-//Loop to add click listeners to the operator buttons
-for(var i = 0; i < operBtn.length; i++){
-    operBtn[i].addEventListener("click", operBtnEvent, false);
-}
-
-//Equals button click listener, runs the equality function on click
-equalsBtn.addEventListener("click", equality, false);
-
-decimalBtn.addEventListener("click", decimalFunc, false);
-
 function decimalFunc(){
-  decimal = "."
+  decimal = ".";
 }
 
 function resetDecimal(){
@@ -88,7 +92,7 @@ function equality() {
 
 //Function that resets the calculator back to initial state. Saves the result of numOne and numTwo as numThree.
 function reset() {
-  decimal = "";
+  resetDecimal();
   numOne = oper = numTwo = "";
   numButtonsOne = numButtonsTwo = operButtons = [];
   current.textContent = numThree;
