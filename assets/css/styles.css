@@ -67,7 +67,7 @@ body {
   width: 50%;
 }
 
-.one, .operator, .equals {
+.buttonStyle {
   height: 25%;
   width: 25%;
 }

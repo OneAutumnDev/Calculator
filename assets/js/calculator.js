@@ -8,9 +8,11 @@ var numButtonsOne = []; //Array that number button clicks are stored in.
 var numButtonsTwo = []; //Array for number button clicks, tied to numTwo
 var operButtons = []; //Array for operator buttons, tied to oper
 var current = document.querySelector(".screen span"); //The current value, shown on the screen
-var numBtn = document.querySelectorAll(".one"); //Selector, all elements with class of "one" (placeholder)
-var operBtn = document.querySelectorAll(".operator");
-var equalsBtn = document.querySelector(".equals");
+var numBtn = document.querySelectorAll(".num"); //Selector, all elements with class of "one" (placeholder)
+var operBtn = document.querySelectorAll(".operator"); //Selects the operator buttons "+,-,*,/"
+var equalsBtn = document.querySelector(".equals"); //Selects the equals "=" button
+var decimalBtn = document.querySelector(".decimal");
+//Object that stores the potential calculations based on the oper variable.
 var calculation = {
   "+": function(a, b) { return a + b},
   "-": function(a, b) { return a - b},
@@ -52,8 +54,10 @@ for(var i = 0; i < operBtn.length; i++){
     operBtn[i].addEventListener("click", operBtnEvent, false);
 }
 
+//Equals button click listener, runs the equality function on click
 equalsBtn.addEventListener("click", equality, false);
 
+//Function to calculate the total when the equals button is clicked.
 function equality() {
   equals = "=";
   numOne = Number(numOne);
@@ -62,14 +66,19 @@ function equality() {
   reset();
 }
 
-//if the equals button is pressed, run the calculation. calculation[signBtn](inp1, inp2);
+//Function that resets the calculator back to initial state. Saves the result of numOne and numTwo as numThree.
 function reset() {
   numOne = oper = numTwo = "";
   numButtonsOne = numButtonsTwo = operButtons = [];
   current.textContent = numThree;
 }
 
+//Function that actually calculates and returns the results of numOne and numTwo
 function calculate() {
   numThree = calculation[oper](numOne,numTwo);
   current.textContent = numThree;
 }
+
+//If numThree != "", use numThree as numOne, and run the next calculation using numTwo.
+
+//Do I need to divide or use modulus? Can I add a button that will return the remainder of two numbers?
