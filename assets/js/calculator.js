@@ -3,6 +3,7 @@ var numBtn = document.querySelectorAll(".num"); //Selector, all elements with cl
 var operBtn = document.querySelectorAll(".operator"); //Selects the operator buttons "+,-,*,/"
 var equalsBtn = document.querySelector(".equals"); //Selects the equals "=" button
 var decimalBtn = document.querySelector(".decimal"); //Selects the decimal "." button
+var clearAll = document.querySelector(".clearAll");
 var calculation = {
   "+": function(a, b) { return a + b},
   "-": function(a, b) { return a - b},
@@ -31,6 +32,11 @@ for(var i = 0; i < operBtn.length; i++){
 equalsBtn.addEventListener("click", equality, false);
 
 decimalBtn.addEventListener("click", decimalFunc, false);
+
+clearAll.addEventListener("click", function(){
+  reset();
+  current.textContent = 0;
+});
 
 //Loop through the number Buttons, logic for Number One and Number Two
 for(var i = 0; i < numBtn.length; i++){

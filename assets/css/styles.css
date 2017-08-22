@@ -25,7 +25,8 @@ body {
 .containerScreen {
   height: 10%;
   width: 100%;
-  background: #b0b4ba;
+  background: #444444;
+  color: #fff;
   display: flex;
 }
 
@@ -54,6 +55,7 @@ body {
   display: flex;
   width: 100%;
   height: 20%;
+  border-radius: 5px;
 }
 
 .containerNumbers {
@@ -67,9 +69,14 @@ body {
   width: 50%;
 }
 
-.buttonStyle {
+.button {
   height: 25%;
   width: 25%;
+  border-radius: 5px;
+}
+
+.button:hover, .clear:hover {
+  background-color: #f9826d;
 }
 
 @media only screen and (max-width: 400px){
@@ -77,17 +84,33 @@ body {
 }
 
 @media only screen and (min-width: 401px) and (max-width: 720px){
-
+  .container {
+    margin: 0 auto;
+    width: 400px;
+    height: 700px;
+  }
 }
 
 @media only screen and (min-width: 721px) and (max-width: 900px){
-
+  .container {
+    margin: 0 auto;
+    width: 400px;
+    height: 700px;
+  }
 }
 
 @media only screen and (min-width: 901px) and (max-width: 1200px){
-
+  .container {
+    margin: 0 auto;
+    width: 400px;
+    height: 700px;
+  }
 }
 
 @media only screen and (min-width: 1200px){
-
+  .container {
+    margin: 0 auto;
+    width: 400px;
+    height: 700px;
+  }
 }
