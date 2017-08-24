@@ -27,22 +27,28 @@ body {
   background: #444444;
   color: #fff;
   display: flex;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .screen {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   padding: 25px;
   width: 100%;
   Border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 #screenSpan {
+  background-color: green;
+  padding-right: 5px;
   border: 2px solid black;
   width: 100%;
-  text-align: right;
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .contentContainer {
@@ -50,7 +56,6 @@ body {
   flex-wrap: wrap;
   height: 90%;
   width: 100%;
-  border-radius: 10px;
 }
 
 .clearContents {
@@ -68,7 +73,7 @@ body {
 
 .clear {
   width: 50%;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .button {
