@@ -4,6 +4,7 @@ var operBtn = document.querySelectorAll(".operator"); //Selects the operator but
 var equalsBtn = document.querySelector(".equals"); //Selects the equals "=" button
 var decimalBtn = document.querySelector(".decimal"); //Selects the decimal "." button
 var clearAll = document.querySelector(".clearAll");
+var clearLast = document.querySelector(".clearLast");
 var calculation = {
   "+": function(a, b) { return a + b},
   "-": function(a, b) { return a - b},
@@ -68,6 +69,7 @@ for(var i = 0; i < numBtn.length; i++){
   });
 }
 
+clearLast.addEventListener("click", clearLastItem, false);
 
 //function to add operators to the signButtons array and then convert them into values for the inpSign variable. Happens during the click event.
 function operBtnEvent() {
@@ -117,6 +119,34 @@ function calculate() {
   current.textContent = numThree;
 }
 
-//If numThree != "", use numThree as numOne, and run the next calculation using numTwo.
+function clearLastItem() {
+  //clear last value in numOne
+  //if there is no operator, clear numOne
+  if(oper.length === 0){
+    numButtonsOne.pop();
+    numOne = numButtonsOne.toString().replace(/,/g,"");
+    current.textContent = numOne;
+  }
+  //clear the operator value
+  //if there is an operator, but numTwo is empty, clear operator
+  if(oper.length === 1 && numTwo.length === 0){
+    operButtons.pop();
+    oper = operButtons.toString().replace(/,/g, "");
+    current.textContent = oper;
+  }
+  //clear last value in numTwo
+  //if numTwo.length > 0, clear numTwo
+  if(numTwo.length > 0){
+    numButtonsTwo.pop();
+    numTwo = numButtonsTwo.toString().replace(/,/g,"");
+    current.textContent = numTwo;
+    if(numTwo.length === 0){
+      current.textContent = oper;
+    }
+  }
+}
 
-//Do I need to divide or use modulus? Can I add a button that will return the remainder of two numbers?
+
+
+//PROBLEM: multiple decimals still works. I.e. 3.1.4.5.9.2.6.5
+//How to fix?
