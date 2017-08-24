@@ -26,13 +26,13 @@ var operButtons = []; //Array for operator buttons, tied to oper
 
 //Loop to add click listeners to the operator buttons
 for(var i = 0; i < operBtn.length; i++){
-    operBtn[i].addEventListener("click", operBtnEvent, false);
+    operBtn[i].addEventListener("click", operBtnEvent);
 }
 
 //Equals button click listener, runs the equality function on click
-equalsBtn.addEventListener("click", equality, false);
+equalsBtn.addEventListener("click", equality);
 
-decimalBtn.addEventListener("click", decimalFunc, false);
+decimalBtn.addEventListener("click", decimalFunc);
 
 clearAll.addEventListener("click", function(){
   reset();
@@ -48,7 +48,6 @@ for(var i = 0; i < numBtn.length; i++){
       //If there is a decimal point, add it in.
       if(decimal.length === 1) {
         numButtonsOne.push(".");
-        resetDecimal();
       }
       //Push(add) the value of numBtn[i] to the end of the numButtons array, each time a button is pressed.
       numButtonsOne.push(this.value);
@@ -56,11 +55,11 @@ for(var i = 0; i < numBtn.length; i++){
       numOne = numButtonsOne.toString().replace(/,/g,"");
       current.textContent = numOne;
     } else {
+      resetDecimal();
       //If there is not an operator, add number clicks to Number One, else add them to Number Two
       if(decimal.length === 1) {
         //If there is a decimal point, add it in.
         numButtonsTwo.push(".");
-        resetDecimal();
       }
       numButtonsTwo.push(this.value);
       numTwo = numButtonsTwo.toString().replace(/,/g,"");
@@ -69,7 +68,7 @@ for(var i = 0; i < numBtn.length; i++){
   });
 }
 
-clearLast.addEventListener("click", clearLastItem, false);
+clearLast.addEventListener("click", clearLastItem);
 
 //function to add operators to the signButtons array and then convert them into values for the inpSign variable. Happens during the click event.
 function operBtnEvent() {
@@ -84,11 +83,13 @@ function operBtnEvent() {
 }
 
 function decimalFunc(){
-  decimal = ".";
+  decimal += ".";
 }
 
 function resetDecimal(){
-  decimal = "";
+  if(decimal.length > 0){
+    decimal = "";
+  }
 }
 
 //Function to calculate the total when the equals button is clicked.
@@ -120,9 +121,13 @@ function calculate() {
 }
 
 function clearLastItem() {
+  if(numOne.length <= 1){
+    reset();
+    current.textContent = 0;
+  }
   //clear last value in numOne
   //if there is no operator, clear numOne
-  if(oper.length === 0){
+  if(oper.length === 0 && numOne.length > 0){
     numButtonsOne.pop();
     numOne = numButtonsOne.toString().replace(/,/g,"");
     current.textContent = numOne;
@@ -132,7 +137,7 @@ function clearLastItem() {
   if(oper.length === 1 && numTwo.length === 0){
     operButtons.pop();
     oper = operButtons.toString().replace(/,/g, "");
-    current.textContent = oper;
+    current.textContent = numOne;
   }
   //clear last value in numTwo
   //if numTwo.length > 0, clear numTwo
@@ -150,3 +155,7 @@ function clearLastItem() {
 
 //PROBLEM: multiple decimals still works. I.e. 3.1.4.5.9.2.6.5
 //How to fix?
+
+
+//Bug Fix 1: Fixed issue where clear last on operator would remove the operator, but failed to return/show to numOne
+//Bug Fix 2: Fixed issue where clearLast on the inital screen would clear away the 0.
