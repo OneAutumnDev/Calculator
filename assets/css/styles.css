@@ -95,6 +95,8 @@ body {
     margin: auto;
     width: 400px;
     height: 700px;
+    border: 10px solid green;
+    border-radius: 10px;
   }
 }
 
@@ -103,6 +105,8 @@ body {
     margin: auto;
     width: 400px;
     height: 700px;
+    border: 10px solid green;
+    border-radius: 10px;
   }
 }
 
@@ -111,6 +115,8 @@ body {
     margin: auto;
     width: 400px;
     height: 700px;
+    border: 10px solid green;
+    border-radius: 10px;
   }
 }
 
@@ -119,5 +125,7 @@ body {
     margin: auto;
     width: 400px;
     height: 700px;
+    border: 10px solid green;
+    border-radius: 10px;
   }
 }

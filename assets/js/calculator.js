@@ -47,7 +47,7 @@ for(var i = 0; i < numBtn.length; i++){
     if (oper.length === 0) {
       //If there is a decimal point, add it in.
       if(decimal.length === 1) {
-        numButtonsOne.push(".");
+        numButtonsOne.push(decimal);
       }
       //Push(add) the value of numBtn[i] to the end of the numButtons array, each time a button is pressed.
       numButtonsOne.push(this.value);
@@ -55,15 +55,15 @@ for(var i = 0; i < numBtn.length; i++){
       numOne = numButtonsOne.toString().replace(/,/g,"");
       current.textContent = numOne;
     } else {
-      resetDecimal();
       //If there is not an operator, add number clicks to Number One, else add them to Number Two
       if(decimal.length === 1) {
         //If there is a decimal point, add it in.
-        numButtonsTwo.push(".");
+        numButtonsTwo.push(decimal);
       }
       numButtonsTwo.push(this.value);
       numTwo = numButtonsTwo.toString().replace(/,/g,"");
       current.textContent = numTwo;
+      //Loop through numButtonsTwo and if there is a decimal point, set decimal to 0.
     }
   });
 }
@@ -76,6 +76,9 @@ function operBtnEvent() {
     operButtons.push(this.value);
     oper = operButtons.toString().replace(/,/g, "");
     current.textContent = oper;
+    if(numTwo.length === 0){
+      resetDecimal();
+    }
   } else {
     //if there is already an operator, exit the loop returning "undefined"
     return;
@@ -83,7 +86,7 @@ function operBtnEvent() {
 }
 
 function decimalFunc(){
-  decimal += ".";
+    decimal += ".";
 }
 
 function resetDecimal(){
@@ -128,9 +131,12 @@ function clearLastItem() {
   //clear last value in numOne
   //if there is no operator, clear numOne
   if(oper.length === 0 && numOne.length > 0){
-    numButtonsOne.pop();
+    var numPopOne = numButtonsOne.pop();
     numOne = numButtonsOne.toString().replace(/,/g,"");
     current.textContent = numOne;
+    if(numPopOne === "."){
+      decimal = "";
+    }
   }
   //clear the operator value
   //if there is an operator, but numTwo is empty, clear operator
@@ -142,20 +148,29 @@ function clearLastItem() {
   //clear last value in numTwo
   //if numTwo.length > 0, clear numTwo
   if(numTwo.length > 0){
-    numButtonsTwo.pop();
+    var numPopTwo = numButtonsTwo.pop();
     numTwo = numButtonsTwo.toString().replace(/,/g,"");
     current.textContent = numTwo;
+    if(numPopTwo === "."){
+      decimal = "";
+    }
     if(numTwo.length === 0){
       current.textContent = oper;
     }
   }
 }
 
+function clearDecimalPoint(){
+  //loop through numOne, if there is no decimal point -- decimal = "", if the is a decimal point, decimal == "..."
+}
 
 
-//PROBLEM: multiple decimals still works. I.e. 3.1.4.5.9.2.6.5
-//How to fix?
+
+
 
 
 //Bug Fix 1: Fixed issue where clear last on operator would remove the operator, but failed to return/show to numOne
 //Bug Fix 2: Fixed issue where clearLast on the inital screen would clear away the 0.
+//Bug Fix 3: Partial fix for decimal points. Still error when erasing through clearLast
+//Bug Fix 4: Fixed issue where clicking operator button at any time reset decimal.
+//Bug Fix 5: ClearLast now properly works with decimal points. Needed numPopOne and numPopTwo logic.
