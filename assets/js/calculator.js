@@ -31,17 +31,19 @@ for(var i = 0; i < operBtn.length; i++){
 
 //Equals button click listener, runs the equality function on click
 equalsBtn.addEventListener("click", equality);
-
+//Decimal Button click listener
 decimalBtn.addEventListener("click", decimalFunc);
-
+//Clear All click listener
 clearAll.addEventListener("click", function(){
   reset();
   current.textContent = 0;
 });
+//Clear Last click listener
+clearLast.addEventListener("click", clearLastItem);
 
+//Number Buttons click listener
 //Loop through the number Buttons, logic for Number One and Number Two
 for(var i = 0; i < numBtn.length; i++){
-  //Click Listener for Number Buttons
   numBtn[i].addEventListener("click", function(){
     //If there is not an operator, add number clicks to Number One, else add them to Number Two
     if (oper.length === 0) {
@@ -67,8 +69,6 @@ for(var i = 0; i < numBtn.length; i++){
     }
   });
 }
-
-clearLast.addEventListener("click", clearLastItem);
 
 //function to add operators to the signButtons array and then convert them into values for the inpSign variable. Happens during the click event.
 function operBtnEvent() {
