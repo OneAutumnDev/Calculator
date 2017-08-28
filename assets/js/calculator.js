@@ -50,6 +50,7 @@ for(var i = 0; i < numBtn.length; i++){
       //If there is a decimal point, add it in.
       if(decimal.length === 1) {
         numButtonsOne.push(decimal);
+        decimal += ".";
       }
       //Push(add) the value of numBtn[i] to the end of the numButtons array, each time a button is pressed.
       numButtonsOne.push(this.value);
@@ -61,6 +62,7 @@ for(var i = 0; i < numBtn.length; i++){
       if(decimal.length === 1) {
         //If there is a decimal point, add it in.
         numButtonsTwo.push(decimal);
+        decimal += "."
       }
       numButtonsTwo.push(this.value);
       numTwo = numButtonsTwo.toString().replace(/,/g,"");
@@ -174,3 +176,4 @@ function clearDecimalPoint(){
 //Bug Fix 3: Partial fix for decimal points. Still error when erasing through clearLast
 //Bug Fix 4: Fixed issue where clicking operator button at any time reset decimal.
 //Bug Fix 5: ClearLast now properly works with decimal points. Needed numPopOne and numPopTwo logic.
+//Bug Fix 6: Fixed issue where number button clicks kept looping through and adding decimal point on each number press. (Only presssing decimal once allowed the loop to keep adding decimals after each number. 4.0.2.1.8.5,etc.)

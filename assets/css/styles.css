@@ -3,6 +3,9 @@
 screens up to 1200px, special size for extra large screens?*/
 * {
   box-sizing: border-box;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 html, body {
@@ -15,40 +18,42 @@ body {
 }
 
 .container {
-  height: 100%;
-  width: 100%;
+  margin: 0 auto;
   display: flex;
   flex-flow: wrap;
+  height: 100%;
+  width: 100%;
 }
 
 .containerScreen {
+  display: flex;
   height: 10%;
   width: 100%;
-  background: #444444;
-  color: #fff;
-  display: flex;
-  border-radius: 5px;
+  background: #a1dd9d;
+  color: black;
 }
 
 .screen {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 25px;
+  padding: 10px;
   width: 100%;
-  Border: 2px solid black;
+  height: 100%;
+  Border: 2px solid #efefef;
   border-radius: 5px;
 }
 
 #screenSpan {
-  background-color: green;
-  padding-right: 5px;
-  border: 2px solid black;
-  width: 100%;
-  height: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  width: 100%;
+  height: 100%; /*On Tiny screens I'm losing the screen as a result of not being set as a percentage.*/
+  background-color: #efefef;
+  padding-right: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
 }
 
 .contentContainer {
@@ -56,6 +61,7 @@ body {
   flex-wrap: wrap;
   height: 90%;
   width: 100%;
+  background-color: #a1dd9d;
 }
 
 .clearContents {
@@ -66,66 +72,126 @@ body {
 
 .containerNumbers {
   display: flex;
+  flex-wrap: wrap;
   height: 80%;
   width: 100%;
-  flex-wrap: wrap;
 }
 
 .clear {
-  width: 50%;
+  width: 49%;
+  background-color: #efefef;
   border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .button {
   height: 25%;
-  width: 25%;
+  width: 24%;
+  background-color: #efefef;
   border-radius: 5px;
 }
 
 .button:hover, .clear:hover {
-  background-color: #f9826d;
+  background-color: #efefef;
+  border-color: #a1dd9d;
+  box-shadow: 2px 2px 2px #8c8e8b;
 }
 
 @media only screen and (max-width: 400px){
+ .clear {
+   width: 50%;
+ }
 
+ .button {
+   width: 25%;
+ }
 }
 
 @media only screen and (min-width: 401px) and (max-width: 720px){
   .container {
     margin: auto;
-    width: 400px;
+    width: 420px;
     height: 700px;
-    border: 10px solid green;
+    border: 10px solid #a1dd9d;
     border-radius: 10px;
+  }
+
+  .clearAll {
+    margin-right: 5px;
+  }
+
+  .clearLast {
+    margin-left: 5px;
+  }
+
+  .num, .equals, .decimal {
+    margin-right: 5px;
   }
 }
 
 @media only screen and (min-width: 721px) and (max-width: 900px){
   .container {
     margin: auto;
-    width: 400px;
+    width: 420px;
     height: 700px;
-    border: 10px solid green;
+    border: 10px solid #a1dd9d;
     border-radius: 10px;
+  }
+
+  .clearAll {
+    margin-right: 5px;
+  }
+
+  .clearLast {
+    margin-left: 5px;
+  }
+
+  .num, .equals, .decimal {
+    margin-right: 5px;
   }
 }
 
 @media only screen and (min-width: 901px) and (max-width: 1200px){
   .container {
     margin: auto;
-    width: 400px;
+    width: 420px;
     height: 700px;
-    border: 10px solid green;
+    border: 10px solid #a1dd9d;
     border-radius: 10px;
+  }
+
+  .clearAll {
+    margin-right: 5px;
+  }
+
+  .clearLast {
+    margin-left: 5px;
+  }
+
+  .num, .equals, .decimal {
+    margin-right: 5px;
   }
 }
 
 @media only screen and (min-width: 1200px){
   .container {
     margin: auto;
-    width: 400px;
+    width: 420px;
     height: 700px;
-    border: 10px solid green;
+    border: 10px solid #a1dd9d;
     border-radius: 10px;
+  }
+
+  .clearAll {
+    margin-right: 5px;
+  }
+
+  .clearLast {
+    margin-left: 5px;
+  }
+
+  .num, .equals, .decimal {
+    margin-right: 5px;
   }
 }
