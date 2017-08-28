@@ -50,7 +50,7 @@ for(var i = 0; i < numBtn.length; i++){
       //If there is a decimal point, add it in.
       if(decimal.length === 1) {
         numButtonsOne.push(decimal);
-        decimal += ".";
+        decimalFunc();
       }
       //Push(add) the value of numBtn[i] to the end of the numButtons array, each time a button is pressed.
       numButtonsOne.push(this.value);
@@ -62,7 +62,7 @@ for(var i = 0; i < numBtn.length; i++){
       if(decimal.length === 1) {
         //If there is a decimal point, add it in.
         numButtonsTwo.push(decimal);
-        decimal += "."
+        decimalFunc();
       }
       numButtonsTwo.push(this.value);
       numTwo = numButtonsTwo.toString().replace(/,/g,"");

@@ -22,7 +22,12 @@ body {
   display: flex;
   flex-flow: wrap;
   height: 100%;
-  width: 100%;
+  width: 75%;
+}
+
+h1, h3 {
+  text-decoration: underline;
+  text-align: center;
 }
 
 .containerScreen {
@@ -139,6 +144,14 @@ body {
     border-radius: 10px;
   }
 
+  .message {
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    width: 25%;
+  }
+
   .clearAll {
     margin-right: 5px;
   }
@@ -161,6 +174,14 @@ body {
     border-radius: 10px;
   }
 
+  .message {
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    width: 25%;
+  }
+
   .clearAll {
     margin-right: 5px;
   }
@@ -181,6 +202,14 @@ body {
     height: 700px;
     border: 10px solid #a1dd9d;
     border-radius: 10px;
+  }
+
+  .message {
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    width: 25%;
   }
 
   .clearAll {
