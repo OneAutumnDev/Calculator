@@ -1,3 +1,4 @@
+(function(){
 var current = document.querySelector(".screen span"); //The current value, shown on the screen
 var numBtn = document.querySelectorAll(".num"); //Selector, all elements with class of num (Number Buttons)
 var operBtn = document.querySelectorAll(".operator"); //Selects the operator buttons "+,-,*,/"
@@ -165,7 +166,7 @@ function clearLastItem() {
 function clearDecimalPoint(){
   //loop through numOne, if there is no decimal point -- decimal = "", if the is a decimal point, decimal == "..."
 }
-
+})();
 
 
 

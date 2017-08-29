@@ -85,6 +85,9 @@ h1, h3 {
   border-color: #a1dd9d;
   box-shadow: 2px 2px 2px #8c8e8b; }
 
+.finishedTask {
+  text-decoration: line-through; }
+
 @media only screen and (max-width: 400px) {
   .message {
     display: none; }
@@ -106,7 +109,8 @@ h1, h3 {
     border-radius: 10px; }
 
   .message {
-    display: none; }
+    display: none;
+    margin-right: 50px; }
 
   .clearAll {
     margin-right: 5px; }
@@ -119,6 +123,9 @@ h1, h3 {
     margin-left: 0.5%;
     margin-right: 0.5%; } }
 @media only screen and (min-width: 721px) and (max-width: 900px) {
+  body {
+    margin: auto; }
+
   .container {
     margin: auto;
     width: 420px;
@@ -131,7 +138,8 @@ h1, h3 {
     display: flex;
     justify-content: flex-end;
     height: 100%;
-    width: 25%; }
+    width: 25%;
+    margin: 0 20px 0 0; }
 
   .clearAll {
     margin-right: 5px; }
@@ -139,8 +147,10 @@ h1, h3 {
   .clearLast {
     margin-left: 5px; }
 
-  .num, .equals, .decimal {
-    margin-right: 5px; } }
+  .button {
+    width: 24%;
+    margin-left: 0.5%;
+    margin-right: 0.5%; } }
 @media only screen and (min-width: 901px) and (max-width: 1200px) {
   .container {
     margin: auto;
@@ -162,9 +172,11 @@ h1, h3 {
   .clearLast {
     margin-left: 5px; }
 
-  .num, .equals, .decimal {
-    margin-right: 5px; } }
-@media only screen and (min-width: 1200px) {
+  .button {
+    width: 24%;
+    margin-left: 0.5%;
+    margin-right: 0.5%; } }
+@media only screen and (min-width: 1201px) {
   .container {
     margin: auto;
     width: 420px;
@@ -185,7 +197,9 @@ h1, h3 {
   .clearLast {
     margin-left: 5px; }
 
-  .num, .equals, .decimal {
-    margin-right: 5px; } }
+  .button {
+    width: 24%;
+    margin-left: 0.5%;
+    margin-right: 0.5%; } }
 
 /*# sourceMappingURL=styles.css.map */

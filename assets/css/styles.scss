@@ -25,6 +25,12 @@ $margin-center: auto;
   height: $full-screen;
   width: 25%;
 }
+@mixin button(){
+  width: 24%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+}
+
 * {
   box-sizing: border-box;
   font-family: $font-stack;
@@ -126,6 +132,10 @@ h1, h3 {
   box-shadow: $box-shadow;
 }
 
+.finishedTask {
+  text-decoration: line-through;
+}
+
 @media only screen and (max-width: 400px){
   .message {
     display: none;
@@ -151,6 +161,7 @@ h1, h3 {
 
   .message {
     display: none;
+    margin-right: 50px;
   }
 
   .clearAll {
@@ -162,19 +173,22 @@ h1, h3 {
   }
 
   .button {
-    width: 24%;
-    margin-left: 0.5%;
-    margin-right: 0.5%;
+    @include button();
   }
 }
 
 @media only screen and (min-width: 721px) and (max-width: 900px){
+  body {
+    margin: $margin-center;
+  }
+
   .container {
     @include container();
   }
 
   .message {
     @include message();
+    margin: 0 20px 0 0;
   }
 
   .clearAll {
@@ -185,8 +199,8 @@ h1, h3 {
     margin-left: $margin;
   }
 
-  .num, .equals, .decimal {
-    margin-right: $margin;
+  .button {
+    @include button();
   }
 }
 
@@ -207,12 +221,12 @@ h1, h3 {
     margin-left: $margin;
   }
 
-  .num, .equals, .decimal {
-    margin-right: $margin;
+  .button {
+    @include button();
   }
 }
 
-@media only screen and (min-width: 1200px){
+@media only screen and (min-width: 1201px){
   .container {
     @include container();
   }
@@ -229,7 +243,7 @@ h1, h3 {
     margin-left: $margin;
   }
 
-  .num, .equals, .decimal {
-    margin-right: $margin;
+  .button {
+    @include button();
   }
 }
