@@ -1,5 +1,30 @@
 $font-stack: Roboto, sans-serif;
-
+$primary-color: #a1dd9d;
+$button-color: #efefef;
+$font-color: black;
+$box-shadow:2px 2px 2px #8c8e8b;
+$display: flex;
+$center: center;
+$border-radius: 5px;
+$full-screen: 100%;
+$flex-flow: wrap;
+$justify-content: flex-end;
+$margin: 5px;
+$margin-center: auto;
+@mixin container(){
+  margin: $margin-center;
+  width: 420px;
+  height: 700px;
+  border: 10px solid $primary-color;
+  border-radius: 10px;
+}
+@mixin message(){
+  margin: 0 100px;
+  display: $display;
+  justify-content: $justify-content;
+  height: $full-screen;
+  width: 25%;
+}
 * {
   box-sizing: border-box;
   font-family: $font-stack;
@@ -8,97 +33,97 @@ $font-stack: Roboto, sans-serif;
 }
 
 html, body {
-  height: 100%;
+  height: $full-screen;
   margin: 0;
 }
 
-body {
-  display: flex;
+body{
+  display: $display;
 }
 
 h1, h3 {
   text-decoration: underline;
-  text-align: center;
+  text-align: $center;
 }
 
 .container {
-  display: flex;
-  flex-flow: wrap;
-  height: 100%;
-  width: 100%;
+  display: $display;
+  flex-flow: $flex-flow;
+  height: $full-screen;
+  width: $full-screen;
 }
 
 .containerScreen {
-  display: flex;
+  display: $display;
   height: 10%;
-  width: 100%;
-  background: #a1dd9d;
-  color: black;
+  width: $full-screen;
+  background: $primary-color;
+  color: $font-color;
 }
 
 .screen {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  display: $display;
+  align-items: $center;
+  justify-content: $justify-content;
   padding: 10px;
-  width: 100%;
-  height: 100%;
-  Border: 2px solid #efefef;
-  border-radius: 5px;
+  width: $full-screen;
+  height: $full-screen;
+  border: 2px solid $button-color;
+  border-radius: $border-radius;
 }
 
 #screenSpan {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: #efefef;
-  padding-right: 5px;
-  border: 2px solid black;
-  border-radius: 5px;
+  display: $display;
+  justify-content: $justify-content;
+  align-items: $center;
+  width: $full-screen;
+  height: $full-screen;
+  background-color: $button-color;
+  padding-right: $margin;
+  border: 2px solid $font-color;
+  border-radius: $border-radius;
 }
 
 .contentContainer {
-  display: flex;
-  flex-wrap: wrap;
+  display: $display;
+  flex-wrap: $flex-flow;
   height: 90%;
-  width: 100%;
-  background-color: #a1dd9d;
+  width: $full-screen;
+  background-color: $primary-color;
 }
 
 .clearContents {
-  display: flex;
-  width: 100%;
+  display: $display;
+  width: $full-screen;
   height: 20%;
 }
 
 .containerNumbers {
-  display: flex;
-  flex-wrap: wrap;
+  display: $display;
+  flex-wrap: $flex-flow;
   height: 80%;
-  width: 100%;
+  width: $full-screen;
 }
 
 .clear {
   width: 49%;
-  background-color: #efefef;
-  border-radius: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  background-color: $button-color;
+  border-radius: $border-radius;
+  margin-top: $margin;
+  margin-bottom: $margin;
 }
 
 .button {
   height: 25%;
   width: 24%;
-  background-color: #efefef;
-  border-radius: 5px;
+  background-color: $button-color;
+  border-radius: $border-radius;
 }
 
 .button:hover, .clear:hover {
-  background-color: #efefef;
-  border-color: #a1dd9d;
-  box-shadow: 2px 2px 2px #8c8e8b;
+  background-color: $button-color;
+  border-color: $primary-color;
+  box-shadow: $box-shadow;
 }
 
 @media only screen and (max-width: 400px){
@@ -116,20 +141,24 @@ h1, h3 {
 }
 
 @media only screen and (min-width: 401px) and (max-width: 720px){
+  body {
+    margin: $margin-center;
+  }
+
   .container {
-    margin: auto;
-    width: 420px;
-    height: 700px;
-    border: 10px solid #a1dd9d;
-    border-radius: 10px;
+    @include container();
   }
 
   .message {
     display: none;
   }
 
+  .clearAll {
+    margin-right: $margin;
+  }
+
   .clearLast {
-    margin-left: 5px;
+    margin-left: $margin;
   }
 
   .button {
@@ -137,95 +166,70 @@ h1, h3 {
     margin-left: 0.5%;
     margin-right: 0.5%;
   }
-
 }
 
 @media only screen and (min-width: 721px) and (max-width: 900px){
   .container {
-    margin: auto;
-    width: 420px;
-    height: 700px;
-    border: 10px solid #a1dd9d;
-    border-radius: 10px;
+    @include container();
   }
 
   .message {
-    margin: auto;
-    display: flex;
-    justify-content: flex-end;
-    height: 100%;
-    width: 25%;
+    @include message();
   }
 
   .clearAll {
-    margin-right: 5px;
+    margin-right: $margin;
   }
 
   .clearLast {
-    margin-left: 5px;
+    margin-left: $margin;
   }
 
   .num, .equals, .decimal {
-    margin-right: 5px;
+    margin-right: $margin;
   }
 }
 
 @media only screen and (min-width: 901px) and (max-width: 1200px){
   .container {
-    margin: auto;
-    width: 420px;
-    height: 700px;
-    border: 10px solid #a1dd9d;
-    border-radius: 10px;
+    @include container();
   }
 
   .message {
-    margin: auto;
-    display: flex;
-    justify-content: flex-end;
-    height: 100%;
-    width: 25%;
+    @include message();
   }
 
   .clearAll {
-    margin-right: 5px;
+    margin-right: $margin;
   }
 
   .clearLast {
-    margin-left: 5px;
+    margin-left: $margin;
   }
 
   .num, .equals, .decimal {
-    margin-right: 5px;
+    margin-right: $margin;
   }
 }
 
 @media only screen and (min-width: 1200px){
   .container {
-    margin: auto;
-    width: 420px;
-    height: 700px;
-    border: 10px solid #a1dd9d;
-    border-radius: 10px;
+    @include container();
   }
 
   .message {
-    margin: auto;
-    display: flex;
-    justify-content: flex-end;
-    height: 100%;
-    width: 25%;
+    @include message();
   }
 
   .clearAll {
-    margin-right: 5px;
+    margin-right: $margin;
   }
 
   .clearLast {
-    margin-left: 5px;
+    margin-left: $margin;
   }
 
   .num, .equals, .decimal {
-    margin-right: 5px;
+    margin-right: $margin;
   }
 }
