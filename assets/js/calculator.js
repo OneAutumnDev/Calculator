@@ -1,4 +1,4 @@
-(function(){
+//(function(){
 var current = document.querySelector(".screen span"); //The current value, shown on the screen
 var numBtn = document.querySelectorAll(".num"); //Selector, all elements with class of num (Number Buttons)
 var operBtn = document.querySelectorAll(".operator"); //Selects the operator buttons "+,-,*,/"
@@ -101,10 +101,10 @@ function resetDecimal(){
 //Function to calculate the total when the equals button is clicked.
 function equality() {
   equals = "=";
-  numOne = Number(numOne);
-  numTwo = Number(numTwo);
+  numOne = parseFloat(numOne);
+  numTwo = parseFloat(numTwo);
   calculate();
-  reset();
+  reset();  // RESET FUNCTION HERE PREVENTS ME FROM SETTING NUMONE = NUMTHREE AS IT THEN RESETS THIS VALUE
 }
 
 //Function that resets the calculator back to initial state. Saves the result of numOne and numTwo as numThree.
@@ -120,10 +120,15 @@ function reset() {
   operButtons = [];
 }
 
+function pseudoReset(){
+  
+}
+
 //Function that actually calculates and returns the results of numOne and numTwo
 function calculate() {
   numThree = calculation[oper](numOne,numTwo);
   current.textContent = numThree;
+  numOne = numThree;
 }
 
 function clearLastItem() {
@@ -166,7 +171,7 @@ function clearLastItem() {
 function clearDecimalPoint(){
   //loop through numOne, if there is no decimal point -- decimal = "", if the is a decimal point, decimal == "..."
 }
-})();
+//})();
 
 
 

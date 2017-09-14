@@ -81,9 +81,11 @@ h1, h3 {
   border-radius: 5px; }
 
 .button:hover, .clear:hover {
-  background-color: #efefef;
+  background-color: #a1dd9d;
   border-color: #a1dd9d;
-  box-shadow: 2px 2px 2px #8c8e8b; }
+  box-shadow: 2px 2px 2px #8c8e8b;
+  color: #fff;
+  transition: 0.5s; }
 
 .finishedTask {
   text-decoration: line-through; }

@@ -127,9 +127,11 @@ h1, h3 {
 }
 
 .button:hover, .clear:hover {
-  background-color: $button-color;
+  background-color: $primary-color;
   border-color: $primary-color;
   box-shadow: $box-shadow;
+  color: #fff;
+  transition: 0.5s;
 }
 
 .finishedTask {
