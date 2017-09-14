@@ -22,12 +22,13 @@ var numButtonsOne = []; //Array for number button clicks, tied to numOne
 var numButtonsTwo = []; //Array for number button clicks, tied to numTwo
 var operButtons = []; //Array for operator buttons, tied to oper
 
-//function to add operators to the signButtons array and then convert them into values for the inpSign variable. Happens during the click event.
+//function added operButtons array and then convert them into values for the inpSign variable. Happens during the click event.
 function operBtnEvent() {
   if(oper.length < 1){
     operButtons.push(this.value);
     oper = operButtons.toString().replace(/,/g, "");
     current.textContent = oper;
+    //Check to make sure that we reset decimal value in case we use the clearLast functionality to remove the operator.
     if(numTwo.length === 0){
       resetDecimal();
     }
@@ -63,14 +64,10 @@ function reset() {
   numThree = "";
   oper = "";
   equals = "";
-  decimal = "";
+  resetDecimal();
   numButtonsOne = [];
   numButtonsTwo = [];
   operButtons = [];
-}
-
-function pseudoReset(){
-
 }
 
 //Function that actually calculates and returns the results of numOne and numTwo
@@ -117,27 +114,26 @@ function clearLastItem() {
   }
 }
 
-function clearDecimalPoint(){
-  //loop through numOne, if there is no decimal point -- decimal = "", if the is a decimal point, decimal == "..."
-}
-
-
-//Loop to add click listeners to the operator buttons
+//Loop to add click listeners to the operator buttons. Operator Button click event using the function operBtnEvent.
 for(var i = 0; i < operBtn.length; i++){
     operBtn[i].addEventListener("click", operBtnEvent);
 }
 
 //Equals button click listener, runs the equality function on click
 equalsBtn.addEventListener("click", equality);
+
 //Decimal Button click listener
 decimalBtn.addEventListener("click", decimalFunc);
+
 //Clear All click listener
 clearAll.addEventListener("click", function(){
   reset();
   current.textContent = 0;
 });
+
 //Clear Last click listener
 clearLast.addEventListener("click", clearLastItem);
+
 
 //Number Buttons click listener
 //Loop through the number Buttons, logic for Number One and Number Two
