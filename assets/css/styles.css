@@ -85,7 +85,11 @@ h1, h3 {
   border-color: #a1dd9d;
   box-shadow: 2px 2px 2px #8c8e8b;
   color: #fff;
-  transition: 0.5s; }
+  transition: 0.5s;
+  outline: none; }
+
+.button:focus {
+  outline: none; }
 
 .finishedTask {
   text-decoration: line-through; }

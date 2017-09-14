@@ -132,6 +132,11 @@ h1, h3 {
   box-shadow: $box-shadow;
   color: #fff;
   transition: 0.5s;
+  outline: none;
+}
+
+.button:focus {
+  outline: none;
 }
 
 .finishedTask {
