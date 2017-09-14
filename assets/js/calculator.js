@@ -1,4 +1,4 @@
-//(function(){
+(function(){
 var current = document.querySelector(".screen span"); //The current value, shown on the screen
 var numBtn = document.querySelectorAll(".num"); //Selector, all elements with class of num (Number Buttons)
 var operBtn = document.querySelectorAll(".operator"); //Selects the operator buttons "+,-,*,/"
@@ -21,57 +21,6 @@ var decimal = "";
 var numButtonsOne = []; //Array for number button clicks, tied to numOne
 var numButtonsTwo = []; //Array for number button clicks, tied to numTwo
 var operButtons = []; //Array for operator buttons, tied to oper
-
-//Object that stores the potential calculations based on the oper variable.
-
-
-//Loop to add click listeners to the operator buttons
-for(var i = 0; i < operBtn.length; i++){
-    operBtn[i].addEventListener("click", operBtnEvent);
-}
-
-//Equals button click listener, runs the equality function on click
-equalsBtn.addEventListener("click", equality);
-//Decimal Button click listener
-decimalBtn.addEventListener("click", decimalFunc);
-//Clear All click listener
-clearAll.addEventListener("click", function(){
-  reset();
-  current.textContent = 0;
-});
-//Clear Last click listener
-clearLast.addEventListener("click", clearLastItem);
-
-//Number Buttons click listener
-//Loop through the number Buttons, logic for Number One and Number Two
-for(var i = 0; i < numBtn.length; i++){
-  numBtn[i].addEventListener("click", function(){
-    //If there is not an operator, add number clicks to Number One, else add them to Number Two
-    if (oper.length === 0) {
-      //If there is a decimal point, add it in.
-      if(decimal.length === 1) {
-        numButtonsOne.push(decimal);
-        decimalFunc();
-      }
-      //Push(add) the value of numBtn[i] to the end of the numButtons array, each time a button is pressed.
-      numButtonsOne.push(this.value);
-      //Update the display to show the current value, converted to a string and without the commas.
-      numOne = numButtonsOne.toString().replace(/,/g,"");
-      current.textContent = numOne;
-    } else {
-      //If there is not an operator, add number clicks to Number One, else add them to Number Two
-      if(decimal.length === 1) {
-        //If there is a decimal point, add it in.
-        numButtonsTwo.push(decimal);
-        decimalFunc();
-      }
-      numButtonsTwo.push(this.value);
-      numTwo = numButtonsTwo.toString().replace(/,/g,"");
-      current.textContent = numTwo;
-      //Loop through numButtonsTwo and if there is a decimal point, set decimal to 0.
-    }
-  });
-}
 
 //function to add operators to the signButtons array and then convert them into values for the inpSign variable. Happens during the click event.
 function operBtnEvent() {
@@ -121,7 +70,7 @@ function reset() {
 }
 
 function pseudoReset(){
-  
+
 }
 
 //Function that actually calculates and returns the results of numOne and numTwo
@@ -171,7 +120,56 @@ function clearLastItem() {
 function clearDecimalPoint(){
   //loop through numOne, if there is no decimal point -- decimal = "", if the is a decimal point, decimal == "..."
 }
-//})();
+
+
+//Loop to add click listeners to the operator buttons
+for(var i = 0; i < operBtn.length; i++){
+    operBtn[i].addEventListener("click", operBtnEvent);
+}
+
+//Equals button click listener, runs the equality function on click
+equalsBtn.addEventListener("click", equality);
+//Decimal Button click listener
+decimalBtn.addEventListener("click", decimalFunc);
+//Clear All click listener
+clearAll.addEventListener("click", function(){
+  reset();
+  current.textContent = 0;
+});
+//Clear Last click listener
+clearLast.addEventListener("click", clearLastItem);
+
+//Number Buttons click listener
+//Loop through the number Buttons, logic for Number One and Number Two
+for(var i = 0; i < numBtn.length; i++){
+  numBtn[i].addEventListener("click", function(){
+    //If there is not an operator, add number clicks to Number One, else add them to Number Two
+    if (oper.length === 0) {
+      //If there is a decimal point, add it in.
+      if(decimal.length === 1) {
+        numButtonsOne.push(decimal);
+        decimalFunc();
+      }
+      //Push(add) the value of numBtn[i] to the end of the numButtons array, each time a button is pressed.
+      numButtonsOne.push(this.value);
+      //Update the display to show the current value, converted to a string and without the commas.
+      numOne = numButtonsOne.toString().replace(/,/g,"");
+      current.textContent = numOne;
+    } else {
+      //If there is not an operator, add number clicks to Number One, else add them to Number Two
+      if(decimal.length === 1) {
+        //If there is a decimal point, add it in.
+        numButtonsTwo.push(decimal);
+        decimalFunc();
+      }
+      numButtonsTwo.push(this.value);
+      numTwo = numButtonsTwo.toString().replace(/,/g,"");
+      current.textContent = numTwo;
+      //Loop through numButtonsTwo and if there is a decimal point, set decimal to 0.
+    }
+  });
+}
+})();
 
 
 
