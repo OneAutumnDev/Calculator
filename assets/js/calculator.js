@@ -55,13 +55,14 @@ function equality() {
   numTwo = parseFloat(numTwo);
   calculate();
   reset();  // RESET FUNCTION HERE PREVENTS ME FROM SETTING NUMONE = NUMTHREE AS IT THEN RESETS THIS VALUE
+  numOne = numThree;
 }
 
 //Function that resets the calculator back to initial state. Saves the result of numOne and numTwo as numThree.
 function reset() {
   numOne = "";
   numTwo = "";
-  numThree = "";
+  //numThree = "";
   oper = "";
   equals = "";
   resetDecimal();
@@ -74,7 +75,7 @@ function reset() {
 function calculate() {
   numThree = calculation[oper](numOne,numTwo);
   current.textContent = numThree;
-  numOne = numThree;
+  //numOne = numThree;
 }
 
 function clearLastItem() {
@@ -133,7 +134,6 @@ clearAll.addEventListener("click", function(){
 
 //Clear Last click listener
 clearLast.addEventListener("click", clearLastItem);
-
 
 //Number Buttons click listener
 //Loop through the number Buttons, logic for Number One and Number Two
