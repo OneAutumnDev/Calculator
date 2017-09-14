@@ -54,7 +54,7 @@ function equality() {
   numOne = parseFloat(numOne);
   numTwo = parseFloat(numTwo);
   calculate();
-  reset();  // RESET FUNCTION HERE PREVENTS ME FROM SETTING NUMONE = NUMTHREE AS IT THEN RESETS THIS VALUE
+  reset();
   numOne = numThree;
 }
 
@@ -62,7 +62,6 @@ function equality() {
 function reset() {
   numOne = "";
   numTwo = "";
-  //numThree = "";
   oper = "";
   equals = "";
   resetDecimal();
@@ -73,9 +72,11 @@ function reset() {
 
 //Function that actually calculates and returns the results of numOne and numTwo
 function calculate() {
+  var roundUp = 0.00000000001;
   numThree = calculation[oper](numOne,numTwo);
+  numThree += roundUp;
+  numThree = +numThree.toFixed(2); //Doesn't round perfectly.
   current.textContent = numThree;
-  //numOne = numThree;
 }
 
 function clearLastItem() {
